@@ -44,24 +44,38 @@ function GameBoard(){
                 return true;
             }
         }
-        if(board[0][0]===board[1][0]===board[2][0]){
+        if(board[0][0]===board[1][0]===board[2][0]===player.sign){
             return true
         }
-        else if(board[0][1]===board[1][1]===board[2][1]){
+        else if(board[0][1]===board[1][1]===board[2][1]===player.sign){
             return true
         }
-        else if(board[0][2]===board[1][2]===board[2][2]){
+        else if(board[0][2]===board[1][2]===board[2][2]===player.sign){
             return true
         }
-        else if(board[0][0]===board[1][1]===board[2][2]){
+        else if(board[0][0]===board[1][1]===board[2][2]===player.sign){
             return true
         }
-        else if(board[0][2]===board[1][1]===board[2][0]){
+        else if(board[0][2]===board[1][1]===board[2][0]===player.sign){
             return true
         }
-        else {return false}
-    }
-    return {printState,addSign,resetState,winning}
+        else{
+            let drawStatus = true;
+            for(let i=0;i<row;i++){
+                for(let j=0;j<column;j++){
+                    if(board[i][j].getValue()===" "||board[i][j].getValue()===""){
+                        drawStatus=false;
+                        }
+                    }
+                }
+            if(drawStatus){
+                return "draw";
+                }else{
+                    return false;
+                }
+            }
+        }
+   return {printState,addSign,resetState,winning}
 }
 
 function playGame(){
@@ -90,7 +104,10 @@ function playGame(){
         const result = gameBoard.winning(getActivePlayer());
         if (result===true){
             console.log(`${getActivePlayer().name} won`);
-        }else{
+        }else if(result==="draw"){
+            console.log("It's a draw");
+        }
+        else{
             switchActivePlayer()
             printNewRound()
         }
