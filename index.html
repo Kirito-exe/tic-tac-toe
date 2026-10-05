@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <title>Tic tac toe</title>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h2>TIC-TAC-TOE</h2>
+            <div class="buttons">
+                <button id="open-dialog">Add names</button>
+                <button id="restart">Reset</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="turn">someone's turn</div>
+        <div class="board">
+
+        </div>
+        <div class="winner">someone won</div>
+        </div>
+        <div class="footer">
+            <div>Created by:Kirito(discord:@rtrd_abhii)</div>
+        </div>
+    </div>
+    <dialog id="playerName" closedby="any">
+        <div>Enter the player names:</div>
+        <form>
+            <div class="form-row">
+                <label for="player1">Player 1:</label>
+                <input type="text" id="player1" name="player1"/>
+            </div>
+            <div class="form-row">
+                <label for="player2">Player 2:</label>
+                <input type="text" id="player2" name="player2"/>
+            </div>
+            <button type="button">Done</button>
+        </form>
+    </dialog>
     <script src="script.js">
 
     </script>
