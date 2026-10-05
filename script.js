@@ -107,23 +107,18 @@ function playGame(){
         const move = gameBoard.addSign(row,column,getActivePlayer().sign);
         if (move===false||move==="overwrite"){
             console.log("Invalid move taken, Please do a valid move");
-            printNewRound();
             return;
         }
         const result = gameBoard.winning(getActivePlayer());
         if (result===true){
-            console.log(`${getActivePlayer().name} won`);
             winStatus=true;
         }else if(result==="draw"){
-            console.log("It's a draw");
             winStatus="draw";
         }
         else{
             switchActivePlayer()
-            printNewRound()
         }
     }
-    printNewRound()
     return {playRound,getActivePlayer,getboard:gameBoard.getBoard,getWinStatus,setName}
 }
          
@@ -176,8 +171,6 @@ function screenController(){
         function clickHandler(e){
             const selectedRow = parseInt(e.target.dataset.row)+1;
             const selectedColumn = parseInt(e.target.dataset.column)+1;
-            console.log(selectedRow);
-            console.log(selectedColumn);
             if(!selectedColumn){
                 return;
             }
